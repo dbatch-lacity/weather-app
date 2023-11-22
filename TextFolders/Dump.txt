@@ -1,0 +1,57 @@
+"location":{
+    "name":"Los Angeles",
+    "region":"California",
+    "country":"United States of America",
+    "lat":34.05,
+    "lon":-118.24,"tz_id":
+    "America/Los_Angeles",
+    "localtime_epoch":1700240772,
+    "localtime":"2023-11-17 9:06"},
+"current":{
+    "last_updated_epoch":1700240400,
+    "last_updated":"2023-11-17 09:00",
+    "temp_c":16.1,
+    "temp_f":61.0,
+    "is_day":1,
+    "condition":{
+        "text":"Sunny",
+        "icon":"//cdn.weatherapi.com/weather/64x64/day/113.png",
+        "code":1000
+    },
+    "wind_mph":3.8,
+    "wind_kph":6.1,
+    "wind_degree":30,
+    "wind_dir":"NNE",
+    "pressure_mb":1017.0,
+    "pressure_in":30.03,
+    "precip_mm":0.0,
+    "precip_in":0.0,
+    "humidity":72,
+    "cloud":0,
+    "feelslike_c":16.1,
+    "feelslike_f":61.0,
+    "vis_km":16.0,
+    "vis_miles":9.0,
+    "uv":5.0,
+    "gust_mph":3.6,
+    "gust_kph":5.8}
+
+
+    const [info, setInfo] = useState<WeatherInfo | null>(null);
+  
+    useEffect(() => {
+      const fetchWeatherInfo = async () => {
+        try {
+          const res = await fetch(
+            "https://api.weatherapi.com/v1/current.json?key=bcc267d5043d49b28d6164756231711&q=Los%20Angeles&aqi=no",
+            { cache: "no-store" }
+          );
+          const data: { current: CurrentWeather; location: Location } = await res.json();
+          setInfo({ current: data.current, location: data.location });
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      };
+  
+      fetchWeatherInfo();
+    }, []);
