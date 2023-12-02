@@ -1,15 +1,12 @@
 import Link from "next/link";
-import GetAllComponents from './components/getAllComponents'
-
-
+import AllComponents from "./components/allComponents";
 
 export default function Home() {
-  
   return (
     <div>
       <h1>Weather App</h1>
       <div>
-        <GetAllComponents />
+        <AllComponents />
       </div>
     </div>
   );

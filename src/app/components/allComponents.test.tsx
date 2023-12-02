@@ -1,4 +1,4 @@
-import { validateZipCode } from "./page";
+import { validateZipCode } from "./allComponents";
 
 describe("validate zipcode", () => {
   it("should return true for valid zipcode", () => {
@@ -35,7 +35,6 @@ describe("validate zipcode", () => {
     const input: string = "00000";
     expect(validateZipCode(input)).toBe(false);
   });
-
 
   it("should return false for invalid zipcode", () => {
     const input: string = "-1001";

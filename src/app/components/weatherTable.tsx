@@ -1,5 +1,5 @@
-import React from 'react'
-import {WeatherInfo} from '../weatherInfo/page'
+import React from "react";
+import { WeatherInfo } from "../weatherInfo/fetchWeather";
 
 interface WeatherTableProps {
   weatherInfo: WeatherInfo;
@@ -8,7 +8,7 @@ interface WeatherTableProps {
 const WeatherTable: React.FC<WeatherTableProps> = ({ weatherInfo }) => {
   return (
     <div>
-      <h1>{weatherInfo.location.name} Weather</h1>
+      <h1>{weatherInfo.name} Weather</h1>
       <p>{new Date().toLocaleTimeString()}</p>
       <table className="table table-bordered">
         <thead>
@@ -21,10 +21,12 @@ const WeatherTable: React.FC<WeatherTableProps> = ({ weatherInfo }) => {
         </thead>
         <tbody>
           <tr>
-            <td>{weatherInfo.current.temp_f} F°</td>
-            <td>{weatherInfo.current.condition.text}</td>
-            <td>{weatherInfo.current.wind_mph} MPH</td>
-            <td>{weatherInfo.current.humidity}%</td>
+            <td>
+              {Math.round((weatherInfo.main.temp - 273.15) * (9 / 5) + 32)} F°
+            </td>
+            <td>{weatherInfo.weather[0].main}</td>
+            <td>{weatherInfo.wind.speed} MPH</td>
+            <td>{weatherInfo.main.humidity}%</td>
           </tr>
         </tbody>
       </table>
