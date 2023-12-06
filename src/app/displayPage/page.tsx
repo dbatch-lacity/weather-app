@@ -18,32 +18,28 @@ import { useEffect, useState } from "react";
  * @returns
  */
 function weatherDisplayPage() {
-  const [test, setTest] = useState(0);
+  const [data, setData] = useState<WeatherInfo | null>(null);
+  const [error, setError] = useState<Error | null>(null);
 
   const searchParams = useSearchParams();
   const zipCode = searchParams?.get("zipCode") as string;
-  // const results = (await fetchWeatherData(zipCode)) as WeatherInfo;
   console.log("Weather Display page updated");
 
   useEffect(() => {
-    setTest(test + 1);
-    console.log("test in the body");
-    return () => {
-      console.log("test was tested once");
+    const fetchData = async () => {
+      try {
+        const result = (await fetchWeatherData(zipCode)) as WeatherInfo;
+        setData(result);
+      } catch {
+        setError(error);
+      }
     };
+    fetchData();
   }, []);
 
   return (
     <div>
-      <button
-        onClick={() => {
-          setTest(test * 10);
-        }}
-      >
-        Button
-      </button>
-      {test}
-      {/* <WeatherTable weatherInfo={results}></WeatherTable> {} */}
+      <WeatherTable weatherInfo={data}></WeatherTable> {}
     </div>
   );
 }

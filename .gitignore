@@ -34,3 +34,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+apikey.ts
+route.ts
+
+#api related
+weatherApi
+textFolders
+dump.txt
+
+
+

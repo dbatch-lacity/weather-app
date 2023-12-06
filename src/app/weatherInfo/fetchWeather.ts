@@ -52,17 +52,18 @@ export interface WeatherInfo {
 }
 
 export default async function fetchWeatherData(zipCode: string) {
-  const apiKey = "818e9826a9d77fdb838268aad962737e";
+  const apiKey = "";
   const location = zipCode;
 
   try {
     // Fetch latitude and longitude using the Zip Code API
-    const geoApiUrl = `http://api.openweathermap.org/geo/1.0/zip?zip=${location}&appid=${apiKey}`;
+    const geoApiUrl = ``;
+    console.log(geoApiUrl);
     const responseGeo = await fetch(geoApiUrl);
     const dataGeo: Geographic = await responseGeo.json();
 
     // Fetch weather using the latitude and longitude
-    const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${dataGeo.lat}&lon=${dataGeo.lon}&appid=${apiKey}`;
+    const weatherApiUrl = ``;
 
     const res = await fetch(weatherApiUrl, {
       cache: "no-store",

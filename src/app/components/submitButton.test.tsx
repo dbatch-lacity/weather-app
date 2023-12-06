@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
-import SubmitButton from "./submitButton"; // Adjust the import path based on your project structure
+import SubmitButton from "./submitButton";
 
 // Test suite for the SubmitButton component
 describe("SubmitButton Component", () => {

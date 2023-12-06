@@ -2,10 +2,14 @@ import React from "react";
 import { WeatherInfo } from "../weatherInfo/fetchWeather";
 
 interface WeatherTableProps {
-  weatherInfo: WeatherInfo;
+  weatherInfo?: WeatherInfo | null;
 }
 
 const WeatherTable: React.FC<WeatherTableProps> = ({ weatherInfo }) => {
+  if (!weatherInfo) {
+    return <div>No weather data available</div>;
+  }
+
   return (
     <div>
       <h1>{weatherInfo.name} Weather</h1>
