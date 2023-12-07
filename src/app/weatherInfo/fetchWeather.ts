@@ -1,4 +1,5 @@
 // pages/api/weather.js
+import { headers } from "next/headers";
 interface Geographic {
   zip: number;
   name: string;
@@ -52,18 +53,19 @@ export interface WeatherInfo {
 }
 
 export default async function fetchWeatherData(zipCode: string) {
-  const apiKey = "";
   const location = zipCode;
+  require("dotenv").config();
+  console.log(process.env.NEXT_PUBLIC_API_KEY);
 
   try {
     // Fetch latitude and longitude using the Zip Code API
-    const geoApiUrl = ``;
+    const geoApiUrl = `http://api.openweathermap.org/geo/1.0/zip?zip=${location}&appid=${process.env.NEXT_PUBLIC_API_KEY}`;
     console.log(geoApiUrl);
     const responseGeo = await fetch(geoApiUrl);
     const dataGeo: Geographic = await responseGeo.json();
 
     // Fetch weather using the latitude and longitude
-    const weatherApiUrl = ``;
+    const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${dataGeo.lat}&lon=${dataGeo.lon}&appid=${process.env.NEXT_PUBLIC_API_KEY}`;
 
     const res = await fetch(weatherApiUrl, {
       cache: "no-store",
@@ -79,6 +81,4 @@ export default async function fetchWeatherData(zipCode: string) {
     console.error("Error fetching weather data:", error);
     return null;
   }
-
-  // Send back the combined response
 }

@@ -7,7 +7,7 @@ interface WeatherTableProps {
 
 const WeatherTable: React.FC<WeatherTableProps> = ({ weatherInfo }) => {
   if (!weatherInfo) {
-    return <div>No weather data available</div>;
+    return <div></div>;
   }
 
   return (

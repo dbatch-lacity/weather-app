@@ -41,6 +41,7 @@ route.ts
 weatherApi
 textFolders
 dump.txt
+.env
 
 
 
