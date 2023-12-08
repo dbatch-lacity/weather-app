@@ -3,6 +3,9 @@ import WeatherTable from "../components/weatherTable";
 import { useSearchParams } from "next/navigation";
 import fetchWeatherData, { WeatherInfo } from "../weatherInfo/fetchWeather";
 import { useEffect, useState } from "react";
+import { GET } from "../api/weatherApi/route";
+import { NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 
 /**
  *
@@ -17,29 +20,34 @@ import { useEffect, useState } from "react";
  * make sure when entry is not valid to direct user to main page and show an alert saying entry is invalid
  * @returns
  */
+
 function weatherDisplayPage() {
   const [data, setData] = useState<WeatherInfo | null>(null);
   const [error, setError] = useState<Error | null>(null);
 
   const searchParams = useSearchParams();
-  const zipCode = searchParams?.get("zipCode") as string;
-  console.log("Weather Display page updated");
+  const zipCode = searchParams?.get("zipCode");
 
   useEffect(() => {
     const fetchData = async () => {
+      if (!zipCode) {
+        alert("zip code is invalid or null");
+        return;
+      }
       try {
-        const result = (await fetchWeatherData(zipCode)) as WeatherInfo;
+        const response = await fetch(`/api/weatherApi?zipCode=${zipCode}`);
+        const result: WeatherInfo = await response.json();
         setData(result);
       } catch {
         setError(error);
       }
     };
     fetchData();
-  }, []);
+  }, [zipCode]);
 
   return (
     <div>
-      <WeatherTable weatherInfo={data}></WeatherTable> {}
+      <WeatherTable weatherInfo={data} />
     </div>
   );
 }

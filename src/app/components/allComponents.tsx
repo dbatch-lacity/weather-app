@@ -38,7 +38,7 @@ export const AllComponents: React.FC = () => {
       if (!validateZipCode(zipCode)) {
         alert("You entered an invalid zipcode");
       } else {
-        router.push(`../displayPage?zipCode=${zipCode}`);
+        router.push(`/displayPage?zipCode=${zipCode}`);
       }
     } catch (error) {
       console.error("Error fetching weather data:", error);
