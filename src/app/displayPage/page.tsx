@@ -26,7 +26,7 @@ function WeatherDisplayPage() {
       }
     };
     fetchData();
-  }, [zipCode]);
+  }, [error, zipCode]);
 
   return (
     <div>
