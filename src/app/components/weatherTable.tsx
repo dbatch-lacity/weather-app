@@ -1,5 +1,5 @@
 import React from "react";
-import { WeatherInfo } from "../weatherInfo/fetchWeather";
+import { WeatherInfo } from "../api/weatherApi/route";
 
 interface WeatherTableProps {
   weatherInfo?: WeatherInfo | null;
