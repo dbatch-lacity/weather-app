@@ -31,7 +31,7 @@ function weatherDisplayPage() {
   useEffect(() => {
     const fetchData = async () => {
       if (!zipCode) {
-        alert("zip code is invalid or null");
+        alert("zip code is invalid or not provided");
         return;
       }
       try {
