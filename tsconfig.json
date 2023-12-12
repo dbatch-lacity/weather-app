@@ -28,7 +28,8 @@
         "./src/*"
       ]
     },
-    "jsx": "preserve" // or "jsx": "react" for TypeScript < 4.1
+    "jsx": "preserve"
+  
   },
   "include": [
     "next-env.d.ts",
@@ -38,7 +39,7 @@
     "src/**/*",
     "src/**/*.test.ts",
     "src/**/*.spec.ts"
-, "tailwind.config.ts", "jest.config.mjs"  ],
+, "tailwind.config.ts", "jest.config.mjs", "utility"  ],
   "exclude": [
     "node_modules",
     "functions"

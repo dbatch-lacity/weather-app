@@ -2,7 +2,7 @@
 import React from 'react'
 
 interface TextBoxProps {
-  onInputChange: (value: string) => void;
+  onInputChange: (value: string) => void
 }
 
 const textBox: React.FC<TextBoxProps> = ({onInputChange}) => {

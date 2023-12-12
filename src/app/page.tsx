@@ -1,4 +1,3 @@
-import Link from "next/link";
 import AllComponents from "./components/allComponents";
 
 export default function Home() {

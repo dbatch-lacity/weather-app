@@ -1,7 +1,7 @@
 export function validateZipCode(zipCode: string): boolean {
   //5 digits
   if (zipCode.length != 5) {
-    return false;
+    return false
   }
   //number
   //no other characters besides numbers
@@ -14,5 +14,5 @@ export function validateZipCode(zipCode: string): boolean {
   if (numInput % 1 != 0 || numInput <= 0 || numInput.toString().length != 5) {
     return false;
   }
-  return true;
+  return true
 }

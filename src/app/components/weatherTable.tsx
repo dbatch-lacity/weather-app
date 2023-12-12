@@ -38,4 +38,4 @@ const WeatherTable: React.FC<WeatherTableProps> = ({ weatherInfo }) => {
   );
 };
 
-export default WeatherTable;
+export default WeatherTable
