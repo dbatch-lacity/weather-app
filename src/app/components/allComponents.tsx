@@ -10,7 +10,7 @@ export const AllComponents: React.FC = () => {
 
   const router = useRouter();
 
-    const handleInputChange = (value: string) => {
+  const handleInputChange = (value: string) => {
     setZipCode(value);
   };
 
