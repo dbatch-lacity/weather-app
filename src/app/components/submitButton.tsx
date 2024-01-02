@@ -5,8 +5,8 @@ interface SubmitButtonProps {
   onSubmit: () => void
 }
 
-const submitButton: React.FC<SubmitButtonProps> = ({onSubmit}) => {
+const SubmitButton: React.FC<SubmitButtonProps> = ({onSubmit}) => {
   return  <button onClick={onSubmit}>Submit</button>
 }
 
-export default submitButton
+export default SubmitButton
